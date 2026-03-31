@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Escolha um perfil para começar a assistir">
+    <title>Netflix</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <!-- Botão de toggle para alternar tema -->
+        <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Alternar modo escuro/claro">
+            <span class="theme-icon">🌙</span>
+        </button>
+        
+        <h1>Quem está assistindo?</h1>
+        <p>Selecione um perfil para continuar</p>
+    </header>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@900&display=swap" rel="stylesheet">
+    <main>
+        <!-- Seção de seleção de perfis com navegação semântica -->
+        <section class="profiles-section" aria-labelledby="profiles-heading">
+            <!-- Navegação do perfil usando lista estruturada -->
+            <nav>
+                <!-- Lista não ordenada como container externo -->
+                <ul class="profiles-container">
+                    <!-- Lista ordenada dos perfis disponíveis -->
+                    <li>
+                        <ol class="profiles">
+                            <li class="profile-item">
+                                <a href="catalogo/catalogo.html">
+                                <article class="profile">
+                                    <figure>
+                                        <img src="/assets/perfil1.png" alt="Perfil do usuário 1">
+                                    </figure>
+                                    <figcaption>Perfil 1</figcaption>
+                                </article>
+                                </a>
+                            </li>
+                            <li class="profile-item">
+                                <a href="catalogo/catalogo.html">
+                                <article class="profile">
+                                    <figure>
+                                        <img src="/assets/perfil2.png" alt="Perfil do usuário 2">
+                                    </figure>
+                                    <figcaption>Perfil 2</figcaption>
+                                </article>
+                                </a>
+                            </li>
+                            <li class="profile-item">
+                                <a href="catalogo/catalogo.html">
+                                <article class="profile">
+                                    <figure>
+                                        <img src="/assets/perfil3.png" alt="Perfil do usuário 3">
+                                    </figure>
+                                    <figcaption>Perfil 3</figcaption>
+                                </article>
+                                </a>
+                            </li>
+                            <li class="profile-item">
+                                <a href="catalogo/catalogo.html">
+                                <article class="profile">
+                                    <figure>
+                                        <img src="/assets/perfil4.png" alt="Perfil do usuário 4">
+                                    </figure>
+                                    <figcaption>Perfil 4</figcaption>
+                                </article>
+                                </a>
+                            </li>
+                        </ol>
+                    </li>
+                </ul>
+            </nav>
+        </section>
+    </main>
+
+    <script src="index.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const profileLinks = document.querySelectorAll('.profile-item a');
+            
+            profileLinks.forEach(link => {
+                link.addEventListener('click', (event) => {
+                    const profile = event.currentTarget.querySelector('.profile');
+                    const profileName = profile.querySelector('figcaption').textContent;
+                    const profileImage = profile.querySelector('img').src;
+                    
+                    localStorage.setItem('perfilAtivoNome', profileName);
+                    localStorage.setItem('perfilAtivoImagem', profileImage);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
