@@ -1,0 +1,339 @@
+/* ===== RESET GLOBAL ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ===== CONFIGURAÇÃO HTML E BODY ===== */
+html, body {
+    height: 100%;
+    overflow: hidden;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px; /* Valor mais padrão e estável */
+}
+
+/* ===== TEMAS COM VARIÁVEIS CSS ===== */
+:root {
+    --bg-primary: #0a0a0a;
+    --bg-secondary: #2f2f2f;
+    --bg-tertiary: #1a1a1a;
+    --text-primary: #fff;
+    --text-secondary: #b3b3b3;
+    --text-muted: #808080;
+    --border-color: #333;
+    --shadow-color: rgba(0, 0, 0, 0.5);
+    --accent-color: #e50914;
+    --accent-hover: #ff1a1a;
+    --transition-duration: 0.3s;
+}
+
+/* Light Mode */
+body.light-mode {
+    --bg-primary: #f9f9f9;
+    --bg-secondary: #e5e5e5;
+    --bg-tertiary: #ffffff;
+    --text-primary: #333333;
+    --text-secondary: #666666;
+    --text-muted: #999999;
+    --border-color: #ddd;
+    --shadow-color: rgba(0, 0, 0, 0.15);
+    --accent-color: #e50914;
+    --accent-hover: #c40812;
+}
+
+/* ===== ESTILOS DO BODY ===== */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    line-height: 1.6;
+    overflow-x: hidden;
+    transition: background-color var(--transition-duration) ease, color var(--transition-duration) ease;
+}
+
+/* ===== BOTÃO DE TOGGLE DE TEMA ===== */
+.theme-toggle {
+    position: fixed;
+    right: 1rem;
+    bottom: 1rem;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 2px solid var(--text-primary);
+    background-color: var(--bg-secondary);
+    background-image: url('assets/light-mode.png');
+    background-size: 60%;
+    background-position: center;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    transition: all var(--transition-duration) ease;
+    z-index: 200;
+}
+
+/* Muda ícone para light mode */
+body.light-mode .theme-toggle {
+    background-image: url('assets/dark-mode.png');
+}
+
+.theme-toggle:hover {
+    transform: scale(1.08);
+    box-shadow: 0 12px 24px var(--shadow-color);
+    border-color: var(--accent-color);
+}
+
+/* ===== HEADER ===== */
+header {
+    text-align: center;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.95) 0%, rgba(20, 20, 20, 0.95) 100%);
+    padding: 60px 20px 40px;
+    margin-bottom: 30px;
+}
+
+/* ===== MAIN ===== */
+main {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* TÍTULO "QUEM ESTÁ ASSISTINDO?" */
+main::before {
+    content: "Quem está assistindo?";
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    text-align: center;
+    margin-bottom: 45px;
+    display: block;
+    width: 100%;
+    max-width: 560px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* ==================== SEÇÃO DE PERFIS ==================== */
+
+.profiles-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 70vh;
+    padding: 20px;
+    width: 100%;
+    background: #0a0a0a;
+}
+
+/* Container principal dos perfis */
+.profiles {
+    list-style: none !important;           /* Força remoção do ponto */
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    flex-wrap: wrap;
+    margin: 0 auto;
+    padding: 0;
+    width: 100%;
+    max-width: 560px;
+}
+
+/* Remove marcadores de listas ordenadas e não ordenadas */
+.profiles,
+.profiles li,
+ol.profiles,
+.profiles-container,
+.profiles-container li {
+    list-style: none !important;
+    list-style-type: none !important;
+}
+
+/* Cada item do perfil */
+.profile-item {
+    width: 100%;
+    max-width: 560px;
+    animation: slideUp 0.5s ease-out;
+}
+
+/* Card do perfil */
+.profile {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 78px;
+    border-radius: 18px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.75);
+}
+
+/* ==================== CORES DOS PERFIS (CORRIGIDO) ==================== */
+
+/* Aplica o gradiente diretamente no .profile-item ou no .profile */
+.profile-item:nth-child(1) .profile,
+.profile:nth-child(1) {
+    background: linear-gradient(90deg, #0e0e0e 10%, #e50914 100%);
+}
+
+.profile-item:nth-child(2) .profile,
+.profile:nth-child(2) {
+    background: linear-gradient(90deg, #0e0e0e 10%, #1e3a8a 100%);
+}
+
+.profile-item:nth-child(3) .profile,
+.profile:nth-child(3) {
+    background: linear-gradient(90deg, #0e0e0e 10%, #6a1b9a 100%);
+}
+
+.profile-item:nth-child(4) .profile,
+.profile:nth-child(4) {
+    background: linear-gradient(90deg, #0e0e0e 10%, #d97706 100%);
+}
+
+/* Imagem do perfil */
+.profile figure {
+    width: 68px;
+    height: 68px;
+    min-width: 68px;
+    flex-shrink: 0;
+    margin-left: 8px;
+    border-radius: 14px;
+    overflow: hidden;
+}
+
+.profile img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.75s ease;
+}
+
+/* Nome do perfil */
+.profile figcaption {
+    font-family: 'Poppins', system-ui, sans-serif;
+    font-weight: 900;
+    font-size: 2.9rem;
+    color: #ffffff !important;
+    text-decoration: none !important;
+    letter-spacing: 1.8px;
+    text-transform: uppercase;
+    flex: 1;
+    text-align: right;
+    padding-right: 35px;
+    border: none !important;
+    outline: none !important;
+}
+
+.profile figcaption a,
+.profile figcaption a:link,
+.profile figcaption a:visited,
+.profile figcaption a:hover,
+.profile figcaption a:active,
+.profile figcaption a:focus {
+    color: #ffffff !important;
+    text-decoration: none !important;
+    text-decoration-line: none !important;
+    text-decoration-color: transparent !important;
+    border-bottom: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+/* Garantia extra para hover */
+.profile figcaption a:hover {
+    color: #ffffff !important;
+    text-decoration: none !important;
+}
+
+
+/* Hover */
+.profile:hover {
+    box-shadow: 0 0 0 5px rgba(255, 255, 255, 0.9);
+    transform: scale(1.03);
+}
+
+/* ===== ANIMAÇÕES GERAIS ===== */
+@keyframes slideUp {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Delays dos perfis */
+.profile-item:nth-child(1) { animation-delay: 0.1s; }
+.profile-item:nth-child(2) { animation-delay: 0.2s; }
+.profile-item:nth-child(3) { animation-delay: 0.3s; }
+.profile-item:nth-child(4) { animation-delay: 0.4s; }
+
+/* ===== ACESSIBILIDADE ===== */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.05ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.05ms !important;
+    }
+}
+
+/* Focus states */
+button:focus-visible,
+a:focus-visible {
+    outline: 3px solid #e50914;
+    outline-offset: 2px;
+}
+
+/* ===== OUTROS ESTILOS (mantidos e limpos) ===== */
+header h1, header p {
+    display: none;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-track {
+    background: #0a0a0a;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #e50914;
+    border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #ff1a1a;
+}
+
+/* Botão tema ativo */
+.theme-toggle:active {
+    transform: translateY(-50%) scale(0.95);
+}
+/* FORÇA LIMPEZA TOTAL DA ÁREA SUPERIOR */
+html, body, header, main {
+    background: #0a0a0a !important;
+    box-shadow: none !important;
+    border: 0 !important;
+    outline: none !important;
+}
+
+header {
+    box-shadow: none !important;
+    border-bottom: 0 !important;
+    padding-top: 40px;
+}
+
+a, a:link, a:visited, a:hover, a:active {
+    text-decoration: none !important;
+    color: inherit !important;
+}
